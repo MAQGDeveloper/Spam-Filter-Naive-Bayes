@@ -156,7 +156,7 @@ for pred, actual in zip(posterior,Y_test):
             correct +=1
     elif pred[0] > 0.5:
         correct += 1
-print('The accurancy on {0} testing samples is: {1:.1f}%'.format(len(Y_test),correct/len(Y_test)*100))
+print('La exactitud en {0} muestras de prueba es: {1:.1f}%'.format(len(Y_test),correct/len(Y_test)*100))
 #prints: The accuracy on 1707 testing samples is: 92.0% 
 
 from sklearn.naive_bayes import MultinomialNB
@@ -172,7 +172,7 @@ print(prediction[:10])
 #prints: array([0, 0, 0, 0, 0, 1, 1, 0, 0, 1])
 
 accuracy = clf.score(term_docs_test,Y_test)
-print('The accurancy using MultinomialNB is: {0:.1f}%'.format(accuracy*100))
+print('La precisión con MultinomialNB es: {0:.1f}%'.format(accuracy*100))
 #prints: The accuracy using MultinomialNB is: 92.0%
 
 from sklearn.metrics import confusion_matrix
@@ -215,9 +215,9 @@ plt.plot(false_pos_rate,true_pos_rate,color='darkorange',lw=lw)
 plt.plot([0, 1], [0, 1], color='navy', lw=lw, linestyle='--')
 plt.xlim([0.0,1.0])
 plt.ylim([0.0,1.05])
-plt.xlabel('False Positive Rate')
-plt.ylabel('True Positive Rate')
-plt.title('Receiver Operating Characteristic')
+plt.xlabel('Tasa positiva falsa')
+plt.ylabel('Tasa positiva verdadera')
+plt.title('Característica de funcionamiento del receptor')
 plt.legend(loc="lower right")
 plt.show()
 
@@ -256,7 +256,7 @@ for train_indices, test_indices in k_fold.split(cleaned_emails,labels):
                 auc = roc_auc_score(Y_test,pos_prob)
                 auc_record[max_features][smoothing][fit_prior] = auc+auc_record[max_features][smoothing].get(fit_prior,0.0)
 
-print('max features smoothing fit prior auc'.format(max_features, smoothing, fit_prior, auc/k))
+print('Maximas funciones de suavizado de ajuste prior auc'.format(max_features, smoothing, fit_prior, auc/k))
 for max_features,max_features_record in auc_record.items():
     for smoothing,smoothing_record in max_features_record.items():
         for fit_prior, auc in smoothing_record.items():
